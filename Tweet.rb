@@ -35,7 +35,7 @@ get '/timeline' do
 end
 
 get '/battle' do
-  @user = @user
+  @friends =  @client.friends
   erb :battle
 end
 

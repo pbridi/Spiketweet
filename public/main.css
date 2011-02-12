@@ -20,3 +20,7 @@ h2 {font-size:20px;}
   margin:0 auto; 
   width:700px
 }
+
+.selected{
+  border: 2px solid lime;
+}
