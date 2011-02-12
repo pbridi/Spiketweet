@@ -22,6 +22,7 @@
             <% if @user %>
                 |
                 <a href='/timeline'>Timeline</a> |
+				<a href='/battle'>Battle</a> |
                 <a href='/mentions'>Mentions</a> |
                 <a href='/retweets'>Retweets of me</a> |
                 <a href='/retweeted'>Retweets by me</a> |
@@ -34,6 +35,7 @@
     
     <%= yield %>
     
+    <br clear="all"/>
     <div id="footer">
         <br/>
         <small>

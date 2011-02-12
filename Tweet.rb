@@ -34,6 +34,11 @@ get '/timeline' do
   erb :timeline
 end
 
+get '/battle' do
+  @user = @user
+  erb :battle
+end
+
 get '/mentions' do
   @tweets = @client.mentions
   erb:timeline
