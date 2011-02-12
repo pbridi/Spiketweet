@@ -1,0 +1,1 @@
+you just lost a few seconds of your life reading a useless readme file.
