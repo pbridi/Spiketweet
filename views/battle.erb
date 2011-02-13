@@ -28,7 +28,7 @@
 	Event = YAHOO.util.Event;
 	
 
-	var onLIClick = function (event, matchedEl, container) {
+	var onImgClick = function (event, matchedEl, container) {
 		var elements = YAHOO.util.Dom.getElementsByClassName('selected', 'img');
 		
 		if (Dom.hasClass(matchedEl, "selected") || elements.length >=2) {
@@ -44,51 +44,38 @@
 			document.getElementById("battleBt").disabled="true";	
 
 	};		
-	//	Use the "delegate" method to attach a "click" event listener to the 
-	//	container (<div id="container">).  The listener will only be called if the 
-	//	target of the click event matches the element specified via the CSS 
-	//	selector passed as the fourth argument to the delegate method.
-	Event.delegate("battleContacts", "click", onLIClick, "img");
+	Event.delegate("battleContacts", "click", onImgClick, "img");
 		
 	</script>
 	<div id="battleContent">
-	<div id="battleSelect" style="display:block;">
-		<H2> It's on, Battle! </H2>	
-		<div id="battleContacts" style="width:600px;">
-		<% @friends.each do |result| %>					
-			<img src="<%= result['profile_image_url'] %>" width="73px" height="73px"/>
-		<% end %>			
-		</div>
-		<button id="battleBt" disabled="" onclick="fight()"> I want these guys to fight! </button>	
 		
-		</br>
-	</div>
-	
-	<div id="battleFight" style="display:none;">
-		<H2> The Battle is: </H2>
-		
-		<div id="battleView">
-		
-		<div id="left" style="float:left;">
-			<div id="battleFighter1" style="padding-left:25px;">
-			<!--<img src="http://a2.twimg.com/profile_images/150561718/novo-2.jpg"/>-->
+		<div id="battleSelect" style="display:block;">
+			<H2> It's on, Battle! </H2>	
+			<div id="battleContacts" style="width:600px;">
+				<% @friends.each do |result| %>	
+					<img src="<%= result['profile_image_url'] %>" width="73px" height="73px"/>
+				<% end %>			
 			</div>
-			<button id="fighterBt1" disabled=""> This bitch wins for sure! </button> 
+			<button id="battleBt" disabled="" onclick="fight()"> I want these guys to fight! </button>			
+			</br>
 		</div>
-		<H2 style="float:left; padding-left:25px; padding-right:25px;"> V.S </H2>
+	
+		<div id="battleFight" style="display:none;">
+			<H2> The Battle is: </H2>
+			<div id="left" style="float:left;">
+				<div id="battleFighter1" style="padding-left:25px;">				
+				</div>
+				<button id="fighterBt1" disabled=""> This bitch wins for sure! </button> 
+			</div>	
+					
+			<H2 style="float:left; padding-left:25px; padding-right:25px;"> V.S </H2>		
+			<div id="right" style="float:left;">
+				<div id="battleFighter2" style="padding-left:25px;">		
+				</div>
+				<button id="fighterBt2" disabled=""> Nah, this one`s better </button>
+			</div>	
+			<br clear="all"/>
+		</div>
 		
-		<div id="right" style="float:left;">
-			<div id="battleFighter2" style="padding-left:25px;">
-			<!--<img src="http://a2.twimg.com/profile_images/150561718/novo-2.jpg"/> -->
-			</div>
-			<button id="fighterBt2" disabled=""> Nah, this one`s better </button>		
-		</div>
-								
 	</div>
-	</div>
-	</div>
-	
-	
-	
-
 </div>
