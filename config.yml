@@ -1,4 +1,4 @@
 consumer_key: xY5fKUA6BvTx96uvjBLfJw
 consumer_secret: CfgD6dbSCHhZdYbuVUXq1acdT7Yh6rA80uNhzHNlLQ
-callback_url: http://spiketweet.heroku.com//auth
+callback_url: http://spiketweet.heroku.com/auth
 
