@@ -1,26 +1,51 @@
-body {font-size:16px; font-family:verdana;}
+body {font-size:15px; font-family:verdana; margin:0;}
 img {border:none;}
 h2 {font-size:20px;}
-
 #header h1 {margin:0; font-size:24px;}
-
 #content {
     margin:0 auto;
     width:850px;
+    background: white;
+    padding: 0 50px 0 50px;
 }
-
 #connect_button {
   margin:20 auto;
   width:250px;
   font-size:20px;
   color:red;
 }
-
 .timeline {
   margin:0 auto; 
   width:700px
 }
-
-.selected{
+#battleContacts img{
+  padding: 2px;
+}
+#battleContacts .selected{
+  padding: 0;
   border: 2px solid lime;
+}
+.homeLogo{
+	width: 450px;
+	height: 70px;
+	background: url(/homelogo.png);
+}
+#upperBar, #bottomBar {
+	height: 20px;
+	width: 100%;
+	color:white;
+	background: black;
+}
+#nav p a {
+	color:#333;
+	text-decoration: none;
+}
+.homeViews{
+	padding-top: 15px;
+	padding-bottom: 20px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+
 }

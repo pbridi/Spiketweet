@@ -7,16 +7,17 @@
 
 <body>
 
+<div id="upperBar"></div>
 <div id="content">
     <div id="header">
         <div>
-            <h1>Twitter OAuth</h1>
+            <div class="homeLogo"></div>
         </div>
         <br clear="all"/>
     </div>
     
     <div id="nav" style="float:right">
-        <p>
+        <p id="menu">
             <a href='/'>Home</a> |
             <a href='/search'>Search</a>
             <% if @user %>
@@ -32,18 +33,19 @@
         </p>
     </div>
     <br clear="all"/>
-    
-    <%= yield %>
-    
+    <div class="homeViews">
+    	<%= yield %>
+    </div>
     <br clear="all"/>
-    <div id="footer">
-        <br/>
-        <small>
+    
+</div>
+<div id="footer">
+	<br/>
+    <div id="bottomBar">
+    	<small style="padding-left:20px;">
         	API calls remaining: <%= @rate_limit_status['remaining_hits'] %>/<%= @rate_limit_status['hourly_limit'] %> per hour
         </small>
     </div>
-    
 </div>
-
 </body>
 </html>
