@@ -66,12 +66,12 @@ get '/messages' do
 end
 
 get '/search' do
-  params[:q] ||= 'gremio OR campeao'
+  params[:q] ||= '#dev'
   @search = @client.search(params[:q], :page => params[:page], :per_page => params[:per_page])
   erb :search
 end
 
-# store the request tokens and send to Twitter
+# store the requested token and send to twitter
 get '/connect' do
   request_token = @client.request_token(
     :oauth_callback => ENV['CALLBACK_URL'] || @@config['callback_url']
@@ -81,8 +81,6 @@ get '/connect' do
   redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
 end
 
-# auth URL is called by twitter after the user has accepted the application
-# this is configured on the Twitter application settings page
 get '/auth' do
   # Exchange the request token for an access token.
   
@@ -96,8 +94,6 @@ get '/auth' do
   end
   
   if @client.authorized?
-      # Storing the access tokens so we don't have to go back to Twitter again
-      # in this session.  In a larger app you would probably persist these details somewhere.
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
@@ -114,11 +110,6 @@ get '/disconnect' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
-end
-
-# useful for site monitoring
-get '/ping' do 
-  'pong'
 end
 
 helpers do 
