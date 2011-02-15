@@ -1,59 +1,18 @@
 <div id="battleIndex" style="padding-left:90px">
-	<script type="text/javascript" src="http://yui.yahooapis.com/combo?2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js&2.8.2r1/build/selector/selector-min.js&2.8.2r1/build/event-delegate/event-delegate-min.js"></script>
-	<script type="text/javascript">
-	
-		function populateFrame(elements){
-			var fighter1 = document.getElementById("battleFighter1");
-			var fighter2 = document.getElementById("battleFighter2");			
-			var el1 = document.createElement("img");
-			var el2 = document.createElement("img");
-			el1.src = elements[0].src;
-			el2.src = elements[1].src;	
-			el1.width = 73;		
-			el1.height = 73;	
-			el2.width = 73;		
-			el2.height = 73;				
-			fighter1.appendChild(el1);
-			fighter2.appendChild(el2);
-		}		
-		function fight(){
-			var selectFrame = document.getElementById("battleSelect");
-			var viewFrame = document.getElementById("battleFight");
-			var userFighters = YAHOO.util.Dom.getElementsByClassName('selected', 'img');
-			selectFrame.style.display="none";			
-			viewFrame.style.display="block";			
-			populateFrame(userFighters);
-		}
-		var Dom = YAHOO.util.Dom,
-	Event = YAHOO.util.Event;
-	
+	<script type="text/javascript" src="/js/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
+	<script type="text/javascript" src="/js/yui/selector/selector-min.js"></script>
+	<script type="text/javascript" src="/js/yui/event-delegate/event-delegate-min.js"></script>
+	<script type="text/javascript" src="/js/battleView.js"></script>
 
-	var onImgClick = function (event, matchedEl, container) {
-		var elements = YAHOO.util.Dom.getElementsByClassName('selected', 'img');
-		
-		if (Dom.hasClass(matchedEl, "selected") || elements.length >=2) {
-			Dom.removeClass(matchedEl, "selected");		
-		}
-		else {
-			Dom.addClass(matchedEl, "selected");
-		}
-		elements = YAHOO.util.Dom.getElementsByClassName('selected', 'img');
-		if(elements.length == 2)
-			document.getElementById("battleBt").removeAttribute("disabled");
-		else
-			document.getElementById("battleBt").disabled="true";	
-
-	};		
-	Event.delegate("battleContacts", "click", onImgClick, "img");
-		
-	</script>
 	<div id="battleContent">
 		
 		<div id="battleSelect" style="display:block;">
 			<H2> It's on, Battle! </H2>	
 			<div id="battleContacts" style="width:600px;">
 				<% @friends.each do |result| %>	
-					<img src="<%= result['profile_image_url'] %>" width="73px" height="73px"/>
+					<% if result['profile_image_url'] != "http://static.twitter.com/images/default_profile_normal.png" %>       
+						<img src="<%= result['profile_image_url'] %>" screenname="<%= result['screen_name']%>" width="73px" height="73px"/>
+					<% end %>
 				<% end %>			
 			</div>
 			<button id="battleBt" disabled="" onclick="fight()"> I want these guys to fight! </button>			
@@ -65,15 +24,27 @@
 			<div id="left" style="float:left;">
 				<div id="battleFighter1" style="padding-left:25px;">				
 				</div>
-				<button id="fighterBt1" disabled=""> This bitch wins for sure! </button> 
+				<button id="fighterBt1" onclick="fnCallbackF1()"> This bitch wins for sure! </button> 
 			</div>	
 					
 			<H2 style="float:left; padding-left:25px; padding-right:25px;"> V.S </H2>		
 			<div id="right" style="float:left;">
 				<div id="battleFighter2" style="padding-left:25px;">		
 				</div>
-				<button id="fighterBt2" disabled=""> Nah, this one`s better </button>
+				<button id="fighterBt2" onclick="fnCallbackF2()"> Nah, this one`s better </button>
 			</div>	
+			<br clear="all"/>
+		</div>
+		
+		<div id="battleView" style="display:none;">
+			<H2> Thank you for wasting the damn time voting! </H2>
+			<br/>
+			<img id="chart" src="" width="160" height="220" alt="Tweet  %`s"  style="float:left;"/>
+			
+			<div id="fighterImage" style="float:left; padding-left: 40px;">
+			<small>Your vote:</small>
+			<br/>
+			</div>
 			<br clear="all"/>
 		</div>
 		

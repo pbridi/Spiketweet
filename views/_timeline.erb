@@ -3,7 +3,9 @@
         <p>
             <div style="float:left; margin:5px">
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
-                    <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
+                	<% if status['profile_image_url'] != "http://static.twitter.com/images/default_profile_normal.png" %>
+                    	<img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
+                    <% end %>
                 </a>
             </div>
             <div style="">
