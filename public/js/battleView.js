@@ -54,6 +54,7 @@ function openBattleView(voted,other){
 	chartImage.src=uri;
 	viewFrame.style.display = "none";
 	battleView.style.display = "block";	
+        voted.setAttribute("onClick", "location.href='http://www.twitter.com/"+ voted.getAttribute("screenName") + "'");
 	fighterImage.appendChild(voted);
 }
 
