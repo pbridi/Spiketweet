@@ -1,1 +1,1 @@
-you just lost a few seconds of your life reading a useless readme file.
+As per latest changes on twitter API (April 2011), this app is no longer working properly.
